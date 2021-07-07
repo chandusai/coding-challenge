@@ -6,6 +6,12 @@
     const data = await response.json();
     const accountsData = data.data
     console.log(accountsData)
+
+
+     let formatMoney =(number)=>{
+             return ` $ ${number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
+          
+     }
     
         // Filtering the revenue and finding total_values
    
@@ -13,9 +19,10 @@
             let revenue = accountsRevenue.map(e => e.total_value)
             console.log(revenue)
             let  totalRevenue= arr=>arr.reduce((a,b)=> a+b,0) 
-            let revenueValue= Math.trunc(totalRevenue(revenue))
+            let revenueValue=(totalRevenue(revenue))
+            let formatRevenueValue = formatMoney(revenueValue)
             const displayRevenue = document.querySelector('.card-revenue')
-            displayRevenue.innerHTML = `$${revenueValue}`
+            displayRevenue.innerHTML = `${formatRevenueValue}`
     
         // Filtering the expenses and finding the totalvalues
             let accountsExpenses = accountsData.filter((eachRec)=>{ return eachRec.account_category==='expense'})
@@ -23,9 +30,10 @@
             console.log(overallExpenses)
                 
             let addExpenses = arr => arr.reduce((a,b)=> a+b,0)
-            let expenseValue = Math.trunc(addExpenses(overallExpenses))
+            let expenseValue = (addExpenses(overallExpenses))
+            let formatExpenseValue = formatMoney(Math.trunc(expenseValue))
              const displayExpense = document.querySelector('.card-expenses')
-            displayExpense.innerHTML = `$${expenseValue}`
+            displayExpense.innerHTML = `${formatExpenseValue}`
        
         // Gross profit margin 
             let accountSales = accountsData.filter((eachRec)=>{ return eachRec.account_type==='sales'&& eachRec.value_type === 'debit'})
@@ -54,9 +62,9 @@
         let subAssets = arr =>arr.reduce((a,b)=>a+b,0)
 
         let totalAssests = Math.trunc(addAssets(debitValueAssests)+subAssets(creditValueAssests))
-
+        let formatTotalAssests = formatMoney(totalAssests)
         const displayAssests = document.querySelector('.card-assests')
-        displayAssests.innerHTML = `$${totalAssests}`
+        displayAssests.innerHTML =`${formatTotalAssests}`
         
 
         // finding liabilities 
@@ -71,8 +79,9 @@
           let debLiability = arr =>arr.reduce((a,b)=>a+b,0)
           
         let totalLiability = Math.trunc((credLiability(creditValueLiability)) + (debLiability(debitValueLiability)))
+        let formatTotalLiability = formatMoney(totalLiability)
         const displayLiability = document.querySelector('.card-liabilities')
-        displayLiability.innerHTML = `$${totalLiability}`
+        displayLiability.innerHTML =  `${formatTotalLiability}`
         
 
 

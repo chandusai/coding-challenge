@@ -12,9 +12,10 @@
             let accountsRevenue = accountsData.filter((eachRec)=>{ return eachRec.account_category==='revenue'})
             let revenue = accountsRevenue.map(e => e.total_value)
             console.log(revenue)
-            const totalRevenue= arr=>arr.reduce((a,b)=> a+b,0) 
-            const revenueValue= totalRevenue(revenue)
-            console.log(revenueValue)
+            let  totalRevenue= arr=>arr.reduce((a,b)=> a+b,0) 
+            let revenueValue= Math.trunc(totalRevenue(revenue))
+            const displayRevenue = document.querySelector('.card-revenue')
+            displayRevenue.innerHTML = `$${revenueValue}`
     
         // Filtering the expenses and finding the totalvalues
             let accountsExpenses = accountsData.filter((eachRec)=>{ return eachRec.account_category==='expense'})
@@ -22,20 +23,23 @@
             console.log(overallExpenses)
                 
             let addExpenses = arr => arr.reduce((a,b)=> a+b,0)
-             let expenseValue = addExpenses(overallExpenses)
-            console.log(expenseValue)
+            let expenseValue = Math.trunc(addExpenses(overallExpenses))
+             const displayExpense = document.querySelector('.card-expenses')
+            displayExpense.innerHTML = `$${expenseValue}`
        
         // Gross profit margin 
             let accountSales = accountsData.filter((eachRec)=>{ return eachRec.account_type==='sales'&& eachRec.value_type === 'debit'})
             let  addSales = accountSales.map(e=>(e.total_value))
             let addingSales =  arr => arr.reduce((a,b)=> a+b,0)
-            let grossProfitMarginValue = (addingSales(addSales)/revenueValue)*100
-             console.log(grossProfitMarginValue)
+            let grossProfitMarginValue = Math.trunc((addingSales(addSales)/revenueValue))*100
+            const displayProfit = document.querySelector('.card-profit')
+             displayProfit.innerHTML = `${grossProfitMarginValue}%`
 
         // Net Profit margin 
            let profitMargin = revenueValue - expenseValue
-           let profitMarginValue = (profitMargin/revenueValue)*100
-           console.log(profitMarginValue)
+           let profitMarginValue = Math.trunc((profitMargin/revenueValue))*100
+            const displayNetProfit = document.querySelector('.card-net')
+            displayNetProfit.innerHTML = `${profitMarginValue}%`
         
         // Working capital Ratio
 
@@ -49,8 +53,11 @@
         let creditValueAssests = creditAssetsValue.map(e=>e.total_value)
         let subAssets = arr =>arr.reduce((a,b)=>a+b,0)
 
-        const totalAssests = addAssets(debitValueAssests)+subAssets(creditValueAssests)
-        console.log(totalAssests)
+        let totalAssests = Math.trunc(addAssets(debitValueAssests)+subAssets(creditValueAssests))
+
+        const displayAssests = document.querySelector('.card-assests')
+        displayAssests.innerHTML = `$${totalAssests}`
+        
 
         // finding liabilities 
         let creditLiability = accountsData.filter((eachRec)=>{ return (eachRec.account_category==='liability'&& eachRec.value_type === 'credit') && (eachRec.account_type === 'current'||eachRec.account_type === 'current_accounts_receivable')})
@@ -63,11 +70,17 @@
          let debitValueLiability = debitLiability.map(e=>e.total_value)
           let debLiability = arr =>arr.reduce((a,b)=>a+b,0)
           
-        let totalLiability = (credLiability(creditValueLiability)) + (debLiability(debitValueLiability))
+        let totalLiability = Math.trunc((credLiability(creditValueLiability)) + (debLiability(debitValueLiability)))
+        const displayLiability = document.querySelector('.card-liabilities')
+        displayLiability.innerHTML = `$${totalLiability}`
+        
 
 
-        let workingCapitalRatio = (totalAssests/totalLiability)*100
-        console.log(workingCapitalRatio)
+        let workingCapitalRatio = Math.trunc((totalAssests/totalLiability))*100
+        const displayWorkingCapital = document.querySelector('.card-capital')
+        displayWorkingCapital.innerHTML = `${workingCapitalRatio}%`
+
+        
     }    
     getData()
 

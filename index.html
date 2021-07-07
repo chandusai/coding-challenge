@@ -5,8 +5,88 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
+        <header>
+                <nav class="navbar navbar-light bg-light p-2">
+                    <div class="container-fluid">
+                    <a class="navbar-brand d-flex" href="#"><img src= "./images/logo.png " style = "width:150px;">  <p class="h3 text-success" style = "line-height:4rem;">coding challenge</p></a>
+                    </div>
+                </nav>
+        </header>
+    <div class="container m-5">
+        <div class="row">
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body bg-primary text-white">
+                        <h5 class="card-title">Revenue</h5>
+                        <p class="card-revenue"></p>
+                        
+                   </div>
+                </div>
+        </div>
+            <div class="col-sm-3">
+              <div class="card bg-success text-white">
+                <div class="card-body">
+                  <h5 class="card-title">Expenses</h5>
+                  <p class="card-expenses"></p>
+                  
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card bg-warning text-white">
+                  <div class="card-body">
+                    <h5 class="card-title">Gross Profit Margin</h5>
+                    <p class="card-profit"></p>
+                   
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="card bg-danger text-white">
+                  <div class="card-body">
+                    <h5 class="card-title">Net profit Margin</h5>
+                    <p class="card-net"></p>
+                   
+                  </div>
+                </div>
+              </div>
+        </div>
+        <div class="row mt-5">
+                <div class="col-sm-4">
+                  <div class="card">
+                    <div class="card-body bg-secondary text-white">
+                      <h5 class="card-title">Assests</h5>
+                      <p class="card-assests"></p>
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="card">
+                    <div class="card-body bg-dark text-white">
+                      <h5 class="card-title">Liabilities</h5>
+                      <p class="card-liabilities"></p>
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="card">
+                      <div class="card-body  bg-info text-white">
+                        <h5 class="card-title">Working Capital Ratio</h5>
+                        <p class="card-capital"></p>
+                        
+                      </div>
+                    </div>
+                  </div>
+        </div>
+                  
+       
+  
+          
     
 </body>
 <script src="fetchCall.js"></script>

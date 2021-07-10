@@ -7,6 +7,7 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
+
 <body>
         <header>
                 <nav class="navbar navbar-light bg-light p-2">
@@ -21,7 +22,7 @@
                     <div class="card">
                         <div class="card-body bg-primary text-white">
                         <h5 class="card-title">Revenue</h5>
-                        <p class="card-revenue"></p>
+                        <p id="card-revenue"></p>
                         
                    </div>
                 </div>
@@ -30,7 +31,7 @@
               <div class="card bg-success text-white">
                 <div class="card-body">
                   <h5 class="card-title">Expenses</h5>
-                  <p class="card-expenses"></p>
+                  <p id="card-expenses" data-testid="card-expenses"></p>
                   
                 </div>
               </div>
@@ -87,7 +88,9 @@
        
   
           
-    
+        
 </body>
-<script src="fetchCall.js"></script>
+<script  type = "module" src="scripts/fetchCall.js"></script>
+<script  type = "module" src="scripts/fetchCall.test.js"></script>
+
 </html>

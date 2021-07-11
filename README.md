@@ -46,3 +46,11 @@ For unit test cases Used the jest library to perform test cases on particular fu
 
 Used Git as a version control , by creating a branches like fetch_data, unittests by making the master as a stable branch creating a pull request from the userstories that I worked .
 
+## Name convention 
+
+followed the camel case format
+
+## Better code 
+
+So there are a number of methods in lodash that can be used to add up a sum, such as _.sum which can be used to quickly add up the numbers of an array. In addition summation can also easily be done with methods like _.reduce, and _.forEach. 
+

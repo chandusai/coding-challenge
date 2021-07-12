@@ -54,3 +54,5 @@ followed the camel case format
 
 So there are a number of methods in lodash that can be used to add up a sum, such as _.sum which can be used to quickly add up the numbers of an array. In addition summation can also easily be done with methods like _.reduce, and _.forEach. 
 
+## Application is @ https://priceless-cray-d62097.netlify.app/
+

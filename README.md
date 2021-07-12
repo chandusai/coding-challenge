@@ -26,70 +26,31 @@ You are tasked with developing an application that performs the following tasks 
   5. Working Capital Ratio
 - Commit your changes, and upload all your work to a feature branch of your choice.
 
-## Instructions
+## UI 
 
-- Begin by _forking_ the current repository to your own `github.com` account
-- Clone the repo locally
-- Write your code, commit often
-- Once you are satisfied with the output, push your changes to your `github.com` account
-- Share the link
+1. For creating UI (front-end) used bootstrap 5 as a framework for front-end by creating the components such as like Nav bar & cards.
 
-## Calculations
+## Getting the data from JSON file 
 
-Use the formulas below to calculate your values:
+To get the data from JSon file used the fetch call in Javascript by async/await which convert the promise handling in to await , by using fetch which returns an array as a result . By using fetch API as a promise can lead us in to a callback hell. fetch API has one more issue when we want to retreive the data from the array we can use array methods such as forEach method but it is a synchronous , while fetch is asynchronous we can avoid this one using promise.all or array.reduce/map methods.By using Async , await before fetch provides the much use case.
 
-### Revenue
+## Using Array methods 
 
-This should be calculated by adding up all the values under `total_value` where the `account_category` field is set to `revenue`
+After getting the data from JSON file to perform the calculations for revenue,expenses , Gross profit margin, Net profit margin , assests , liabilties used functional programming concept and perform the map, filter , reduce to filter and access the data.
 
-### Expenses
+## For test cases 
 
-This should be calculated by adding up all the values under `total_value` where the `account_category` field is set to `expense`
+For unit test cases Used the jest library to perform test cases on particular functions.
 
-### Gross Profit Margin
+## version controlling
 
-This is calculated in two steps: first by adding all the `total_value` fields where the `account_type` is set to `sales` and the `value_type` is set to `debit`; then dividing that by the `revenue` value calculated earlier to generate a percentage value.
+Used Git as a version control , by creating a branches like fetch_data, unittests by making the master as a stable branch creating a pull request from the userstories that I worked .
 
-### Net Profit Margin
+## Name convention 
 
-This metric is calculated by subtracting the `expenses` value from the `revenue` value and dividing the remainder by `revenue` to calculate a percentage.
+followed the camel case format
 
-### Working Capital Ratio
+## Better code 
 
-This is calculated dividing the `assets` by the `liabilities` creating a percentage value where `assets` are calculated by:
+So there are a number of methods in lodash that can be used to add up a sum, such as _.sum which can be used to quickly add up the numbers of an array. In addition summation can also easily be done with methods like _.reduce, and _.forEach. 
 
-- adding the `total_value` from all records where the `account_category` is set to `assets`, the `value_type` is set to `debit`, and the `account_type` is one of `current`, `bank`, or `current_accounts_receivable`
-- subtracting the `total_value` from all records where the `account_category` is set to `assets`, the `value_type` is set to `credit`, and the `account_type` is one of `current`, `bank`, or `current_accounts_receivable`
-
-and liabilities are calculated by:
-
-- adding the `total_value` from all records where the `account_category` is set to `liability`, the `value_type` is set to `credit`, and the `account_type` is one of `current` or `current_accounts_payable`
-- subtracting the `total_value` from all records where the `account_category` is set to `liability`, the `value_type` is set to `debit`, and the `account_type` is one `current` or `current_accounts_payable`
-
-## Formatting
-
-All currency figures must be formatted as follows:
-- The value is prefixed with a `$` sign
-- A comma is used to separate every 3 digits in the thousands, millions, billions, and trillions
-- Cents are removed
-
-All percentage values must be formatted to one decimal digit and be prefixed with a `%` sign.  Don't forget to multiply by 100 each time you're tasked with calculating a percentage value.
-
-## Example
-
-Below is what a typical output should look like.  Please note this is *not* the output of the challenge but a mere example.
-
-```
-$ ./myChallenge
-Revenue: $519,169
-Expenses: $411,664
-Gross Profit Margin: 22%
-Net Profit Margin: 21%
-Working Capital Ratio: 95%
-```
-
-# Dependencies
-
-If your program requires a special way to compile or a specific version of a toolset, please be sure to include that in your running instructions.
-
-__Thank you and good luck!__

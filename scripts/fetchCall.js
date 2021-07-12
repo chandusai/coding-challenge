@@ -18,8 +18,12 @@
     const liabilityExpenses = liabilityData (accountsData)  
     const displayLiability = document.querySelector('#card-liabilities')
     displayLiability.innerHTML = `${liabilityExpenses}`
-    // const displayNetProfit = document.querySelector('.card-net')
-    // displayNetProfit.innerHTML = `${profitMarginValue}%`
+    const displayNet = netProfit(revenueValue,expenseValue)
+    const displayNetProfit = document.querySelector('.card-net')
+    displayNetProfit.innerHTML = `${displayNet}%`
+    const workingCapitalRatio = workingCapital(totalAssests,totalLiability)
+    const displayWorkingCapital = document.querySelector('.card-capital')
+    displayWorkingCapital.innerHTML = `${workingCapitalRatio}%`
     }
    
       let formatMoney =(number)=>{
@@ -65,11 +69,12 @@
             return grossProfitMarginValue
         }
       //  // Net Profit margin 
-          
+      let netProfit = (revenueValue,expenseValue)=>{
+        console.log(revenueValue,expenseValue)
            let profitMargin = revenueValue - expenseValue
            let profitMarginValue = Math.trunc((profitMargin/revenueValue))*100
-            const displayNetProfit = document.querySelector('.card-net')
-            displayNetProfit.innerHTML = `${profitMarginValue}%`
+          return profitMarginValue 
+      }    
         
 //         // Working capital Ratio
 
@@ -108,18 +113,17 @@
         }
         
 
+     let workingCapital = (totalAssests,totalLiability)=>{
+     let workingCapitalRatio = Math.trunc((totalAssests/totalLiability))*100
+       return workingCapitalRatio
 
-        let workingCapitalRatio = Math.trunc((totalAssests/totalLiability))*100
-        const displayWorkingCapital = document.querySelector('.card-capital')
-        displayWorkingCapital.innerHTML = `${workingCapitalRatio}%`
-
-        
+     }   
      
 
 
    getData()  
 
-    export{ formatMoney,revenueData,expenseData,salesData,debitData}
+    export{ formatMoney,revenueData,expenseData,salesData,debitData,workingCapital,netProfit,liabilityData}
   
     
 
